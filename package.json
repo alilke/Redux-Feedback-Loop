@@ -5,10 +5,18 @@
   "proxy": "http://localhost:5000",
   "dependencies": {
     "axios": "^0.17.1",
+    "classnames": "^2.2.6",
+    "icons": "^1.0.0",
+    "material-ui": "^0.20.2",
     "pg": "^7.4.1",
-    "react": "^16.8.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.1",
     "react-dom": "^16.8.6",
-    "react-scripts": "^3.0.1"
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.1.1",
+    "react-scripts": "^3.0.1",
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "nodemon": "^1.18.5"

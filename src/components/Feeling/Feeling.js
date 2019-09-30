@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import '../App/App.css';
+import { withStyles } from '@material-ui/core/styles';
+import green from '@material-ui/core/colors/green';
 import Checkbox from '@material-ui/core/Checkbox';
 
-
-class Understanding extends Component {
+const styles = {
+    root: {
+        color: green[600],
+        '&$checked': {
+            color: green[500],
+        },
+    },
+    checked: {},
+};
+class Feeling extends Component {
     state = {
         feelingResponse: '',
         understandingResponse: '',
@@ -12,32 +23,33 @@ class Understanding extends Component {
     }
     handleSubmit = () => {
         console.log('clicked handleSubmit');
-        if (this.state.understandingResponse === '') {
+        if (this.state.feelingResponse === '') {
             alert('Please check box before proceeding')
         } else {
-            this.props.dispatch({ type: 'ADD_UNDERSTANDING', payload: this.state.understandingResponse })
-            this.props.history.push('/Support');
+            this.props.dispatch({ type: 'ADD_FEELING', payload: this.state.feelingResponse })
+            this.props.history.push('/Understanding');
         } return
     }
+
     handleChange = (event) => {
         this.setState({
-            ...this.state.understandingResponse,
-            understandingResponse: event.target.value
+            feelingResponse: event.target.value
         })
     }
 
     render() {
+        console.log(this.state)
         return (
             <div>
-
+                
                 <div className="inputDiv">
                     <h2>
-                        How well are you understanding the content?
-            </h2>
+                        How are you feeling today?
+          </h2>
                     <form className="checkbox">
                         1
            <Checkbox
-                            checked={this.state.understandingResponse === '1'}
+                            checked={this.state.feelingResponse === '1'}
                             onChange={this.handleChange}
                             value='1'
                             color="primary"
@@ -45,7 +57,7 @@ class Understanding extends Component {
                         />
                         2
         <Checkbox
-                            checked={this.state.understandingResponse === '2'}
+                            checked={this.state.feelingResponse === '2'}
                             onChange={this.handleChange}
                             value='2'
                             aria-label='2'
@@ -53,7 +65,7 @@ class Understanding extends Component {
                         />
                         3
         <Checkbox
-                            checked={this.state.understandingResponse === '3'}
+                            checked={this.state.feelingResponse === '3'}
                             onChange={this.handleChange}
                             value='3'
                             aria-label='3'
@@ -61,7 +73,7 @@ class Understanding extends Component {
                         />
                         4
         <Checkbox
-                            checked={this.state.understandingResponse === '4'}
+                            checked={this.state.feelingResponse === '4'}
                             onChange={this.handleChange}
                             value="4"
                             aria-label='4'
@@ -69,7 +81,7 @@ class Understanding extends Component {
                         />
                         5
         <Checkbox
-                            checked={this.state.understandingResponse === '5'}
+                            checked={this.state.feelingResponse === '5'}
                             onChange={this.handleChange}
                             value="5"
                             aria-label='5'
@@ -88,4 +100,4 @@ const mapStateToProps = (reduxStore) => ({
     reduxStore
 })
 
-export default connect(mapStateToProps)(Understanding);
+export default withStyles(styles)(connect(mapStateToProps)(Feeling));
